@@ -32,6 +32,9 @@ $routes->set404Override();
 $routes->get('/', 'HelloController::index');
 $routes->resource('product');
 
+$routes->resource('register');
+$routes->resource('login');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
