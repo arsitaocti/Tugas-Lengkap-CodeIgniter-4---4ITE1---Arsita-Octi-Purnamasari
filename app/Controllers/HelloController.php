@@ -8,6 +8,6 @@ class HelloController extends BaseController
 {
     public function index()
     {
-        echo "lets talk ur story";
+        echo "";
     }
 }

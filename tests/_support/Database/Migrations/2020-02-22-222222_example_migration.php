@@ -1,37 +1,45 @@
 <?php
 
-namespace Tests\Support\Database\Migrations;
+namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class ExampleMigration extends Migration
+class CreateProductTable extends Migration
 {
-    protected $DBGroup = 'tests';
-
     public function up()
     {
-        $this->forge->addField('id');
-        $this->forge->addField([
-            'name'       => ['type' => 'varchar', 'constraint' => 31],
-            'uid'        => ['type' => 'varchar', 'constraint' => 31],
-            'class'      => ['type' => 'varchar', 'constraint' => 63],
-            'icon'       => ['type' => 'varchar', 'constraint' => 31],
-            'summary'    => ['type' => 'varchar', 'constraint' => 255],
-            'created_at' => ['type' => 'datetime', 'null' => true],
-            'updated_at' => ['type' => 'datetime', 'null' => true],
-            'deleted_at' => ['type' => 'datetime', 'null' => true],
-        ]);
-
-        $this->forge->addKey('name');
-        $this->forge->addKey('uid');
-        $this->forge->addKey(['deleted_at', 'id']);
-        $this->forge->addKey('created_at');
-
-        $this->forge->createTable('factories');
+        $fields = [
+            "id" => [
+                "type"=> "INT",
+                "unsigned"=> true,
+                "auto_increment"=> true,
+            ],
+            "name" => [
+                "type"=> "VARCHAR",
+                "constraint" => "200",
+            ],
+            "category" => [
+                "type"=> "VARCHAR",
+                "constraint" => "200",
+            ],
+            "price" => [
+                "type"=> "INT",
+                "null" => true,
+                "default" => null,
+            ],
+            "stock" => [
+                "type"=> "INT",
+                "null" => true,
+                "default" => null,
+            ],
+        ];
+        $this->forge->addKey('id', true);
+        $this->forge->addField($fields);
+        $this->forge->createTable('products', true); //If NOT EXISTS create table products
     }
 
     public function down()
     {
-        $this->forge->dropTable('factories');
+        $this->forge->dropTable('products', true); //If Exists drop table products
     }
 }
