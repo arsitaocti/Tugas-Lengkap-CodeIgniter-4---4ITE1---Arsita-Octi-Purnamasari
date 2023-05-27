@@ -35,8 +35,14 @@ class Product extends ResourceController
      */
     public function show($id = null)
     {
-        //
+        $products = $this->productModel->paginate(1, 'products');
+
+        $payload = [
+            "products" => $products,
+            "pager" => $this->productModel->pager
+        ];
     }
+
 
     /**
      * Return a new resource object, with default properties
