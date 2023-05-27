@@ -93,7 +93,21 @@ class Product extends ResourceController
      */
     public function edit($id = null)
     {
-        //
+        $products = $this->session->get('products');
+
+        $data = null;
+
+        foreach ($products as $item) {
+            if ($item['id'] == $id) {
+                $data = $item;
+            }
+        }
+
+        if (!$data) {
+            throw new \Exception("Data not found!");
+        }
+        
+        echo view('product/edit', ["data" => $data]);
     }
 
     /**
@@ -103,7 +117,31 @@ class Product extends ResourceController
      */
     public function update($id = null)
     {
-        //
+        $products = $this->session->get('products');
+        $data = null;
+
+        $_new_products = [];
+
+        foreach ($products as $item) {
+            if ($item['id'] == $id) {
+
+                $item['name'] = $this->request->getPost('name');
+                $item['category'] = $this->request->getPost('category');
+                $item['stock'] = (int) $this->request->getPost('stock');
+                $item['price'] = (int) $this->request->getPost('price');
+                
+                $data = $item;
+            }
+
+            array_push($_new_products, $item);
+        }
+
+        if (!$data) {
+            throw new \Exception("Data not found!");
+        }
+
+        $this->session->set('products', $_new_products);
+        return redirect()->to('/product');
     }
 
     /**
