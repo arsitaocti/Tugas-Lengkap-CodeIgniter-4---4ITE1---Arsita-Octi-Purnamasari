@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class FollowersJoin extends Migration
+class CreateProductTable extends Migration
 {
     public function up()
     {
