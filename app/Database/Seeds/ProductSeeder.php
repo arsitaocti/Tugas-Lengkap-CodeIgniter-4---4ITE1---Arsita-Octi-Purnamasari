@@ -9,20 +9,20 @@ class ProductSeeder extends Seeder
     public function run()
     {
         $data = [
-            'name' => 'Lalisa',
+            'name' => 'Odol Pipsodin',
             'category'    => 'utlities',
-            'Friends'    => 10000,
-            'VIiew'    => 100,
+            'price'    => 10000,
+            'stock'    => 100,
         ];
 
         // Simple Queries
         $this->db->table('products')->insert($data);
         
         $data = [
-            'name' => 'Jennie',
+            'name' => 'Gayung Love',
             'category'    => 'utlities',
-            'Friends'    => 15000,
-            'View'    => 200,
+            'price'    => 15000,
+            'stock'    => 200,
         ];
         // Using Query Builder
         $this->db->table('products')->insert($data);

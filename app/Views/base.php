@@ -1,8 +1,17 @@
 <html>
     <head>
-        <title><?= isset($title) ? $title : "Hello World!" ?></title>
+        <?= $this->include('layouts/head') ?>
     </head>
     <body>
-        <?= $this->renderSection('content') ?>
+        <?= $this->include('layouts/navbar') ?>
+
+        <main role="main " class="container">
+            <?= $this->include('layouts/header') ?>
+
+            <?= $this->renderSection('content') ?>
+        </main>
+        <?= $this->include('layouts/footer') ?>
+
+        <?= $this->include('layouts/scripts') ?>
     </body>
 </html>
