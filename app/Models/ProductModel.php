@@ -14,7 +14,7 @@ class ProductModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['name', 'category', 'price', 'stock']; //Wajib diisi
+    protected $allowedFields    = ['name', 'category', 'price', 'stock','photo']; //Wajib diisi
 
     // Dates
     protected $useTimestamps = false;

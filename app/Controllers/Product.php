@@ -61,16 +61,31 @@ class Product extends ResourceController
      */
     public function create()
     {
-        $payload = [
-            "name" => $this->request->getPost('name'),
-            "stock" => (int) $this->request->getPost('stock'),
-            "price" => (int) $this->request->getPost('price'),
-            "category" => $this->request->getPost('category'),
-        ];
+        public function create()
+        {
+    
+            $fileName = "";
+    
+            $photo = $this->request->getFile('photo');
+    
+            if ($photo) {
+                $fileName = $photo->getRandomName(); // Mendapatkan nama file baru secara acak
+    
+                $photo->move('photos', $fileName); // Memindahkan file ke public/photos dengan nama acak
+            }
+    
+            $payload = [
+                "name" => $this->request->getPost('name'),
+                "stock" => (int) $this->request->getPost('stock'),
+                "price" => (int) $this->request->getPost('price'),
+                "category" => $this->request->getPost('category'),
+                "photo" => $fileName, // Kita simpan nama filenya saja
+            ];
+    
+            $this->productModel->insert($payload);
+            return redirect()->to('/product');
+        }
 
-
-        $this->productModel->insert($payload);
-        return redirect()->to('/product');
     }
 
     /**

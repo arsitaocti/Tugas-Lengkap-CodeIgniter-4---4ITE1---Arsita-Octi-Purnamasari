@@ -15,6 +15,7 @@
                         <th scope="col ">Stock</th>
                         <th scope="col ">Price</th>
                         <th scope="col ">Category</th>
+                        <th scope="col ">Photo</th>
                         <th scope="col ">Action</th>
                     </tr>
                 </thead>
@@ -27,6 +28,7 @@
                         <td><?= $item['stock'] ?></td>
                         <td><?= $item['price'] ?></td>
                         <td><?= $item['category'] ?></td>
+                        <td><img src="/photos/<?= $item['photo'] ?>" alt="" width=100 height=100></td>
                         <td>
                             <div class="btn-group " role="group " aria-label="Basic example ">
                                 <form action="/product/<?= $item['id'] ?>" method="POST" onsubmit="return confirm(`Are you sure?`)">
@@ -42,6 +44,9 @@
                     <?php endforeach ?>
                 </tbody>
             </table>
+        </div>
+        <div class="col-12">
+            <?= $pager->links('products', 'custom_pagination') ?>
         </div>
     </div>
 </div>

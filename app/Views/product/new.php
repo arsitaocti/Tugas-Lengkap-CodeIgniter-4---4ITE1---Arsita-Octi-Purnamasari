@@ -5,7 +5,7 @@
         <div class="col-12">
             <h5 class="mb-4">Create new product</h5>
 
-            <form action="/product" method="post">
+            <form action="/product" method="post" enctype="multipart/form-data">
 
                 <div class="form-group">
                     <label for="example-product-name">Product Name</label>
@@ -32,6 +32,11 @@
                         <option value="food_and_beverages"> Food & Beverages</option>
                         <option value="books">Books</option>
                     </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="example-product-photo">Photo</label>
+                    <input type="file" class="form-control" id="example-product-photo" aria-describedby="photoHelp" name="photo">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
