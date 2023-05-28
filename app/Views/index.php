@@ -5,7 +5,7 @@
         <div class="col-12">
             <h5 class="mb-4">Hello <?= session('name') ?> </h5>
 
-            <h5 class="mb-4">Daftar Produk</h5>
+            <h5 class="mb-4">THIS OUR PRODUCT GUYS YEAH</h5>
 
             <table class="table table-hover ">
                 <thead>

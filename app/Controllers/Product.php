@@ -59,8 +59,7 @@ class Product extends ResourceController
      *
      * @return mixed
      */
-    public function create()
-    {
+    
         public function create()
         {
     
@@ -86,14 +85,14 @@ class Product extends ResourceController
             return redirect()->to('/product');
         }
 
-    }
+    
 
     /**
      * Return the editable properties of a resource object
      *
      * @return mixed
      */
-    public function edit($id = null)
+     public function edit($id = null)
     {
         $product = $this->productModel->find($id);
         
